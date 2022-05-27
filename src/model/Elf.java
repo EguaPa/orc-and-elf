@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Random;
 
 public class Elf extends Unit {
@@ -21,7 +23,7 @@ public class Elf extends Unit {
 
     @Override
     public void printHealth() {
-        System.out.println("Elf current health is: " + health);
+        System.out.println("model.Elf current health is: " + health);
     }
 
     @Override

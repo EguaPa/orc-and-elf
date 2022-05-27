@@ -1,4 +1,5 @@
-import java.util.Random;
+import model.Elf;
+import model.Orc;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,14 +10,14 @@ public class Main {
             orc.attack(elf);
             elf.printHealth();
             if (elf.getHealth() == 0){
-                System.out.println("Orc won !!!");
+                System.out.println("model.Orc won !!!");
                 break;
             }
 
             elf.attack(orc);
             orc.printHealth();
             if (orc.getHealth() == 0){
-                System.out.println("Elf won !!!");
+                System.out.println("model.Elf won !!!");
                 break;
             }
 
