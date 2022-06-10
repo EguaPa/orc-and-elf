@@ -10,8 +10,6 @@ public class Main {
         ElfSpawner elfSpawner = new ElfSpawner();
         Elf elf = elfSpawner.spawnElf();
 
-//        Orc orc = new Orc(100, 1, 3, 5);
-//        Elf elf = new Elf(100, 2, 2, 4);
         int elves = 1;
         int orcs = 1;
         while (true){
@@ -21,17 +19,28 @@ public class Main {
             if (elf.getHealth() == 0 && elves < 10){
                 elves++;
                 elf = elfSpawner.spawnElf();
-//                elf.spawnElf();
-                System.out.println("model.Orc won !!!");
+                System.out.println(elves);
+                System.out.println("A new unit is summoned");
+
+            }
+            else if (elf.getHealth() == 0 && elves == 9){
+                System.out.println("Orc won !!!");
                 break;
             }
 
             elf.attack(orc);
             orc.printHealth();
             if (orc.getHealth() == 0){
-//                orc.spawnOrc();
-                System.out.println("model.Elf won !!!");
-                break;
+                if (orcs < 10){
+                    orcs++;
+                    orc = orcSpawner.spawnOrc();
+                    System.out.println(orcs);
+                    System.out.println("A new orc is summoned");
+                }
+                else {
+                    System.out.println("Elf won!!");
+                    break;
+                }
             }
 
 
