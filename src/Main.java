@@ -5,45 +5,41 @@ import spawner.OrcSpawner;
 
 public class Main {
     public static void main(String[] args) {
+
+
         OrcSpawner orcSpawner = new OrcSpawner();
         Orc orc = orcSpawner.spawnOrc();
         ElfSpawner elfSpawner = new ElfSpawner();
         Elf elf = elfSpawner.spawnElf();
 
-        int elves = 1;
-        int orcs = 1;
-        while (true){
+        while (true) {
             orc.attack(elf);
             elf.printHealth();
 
-            if (elf.getHealth() == 0 && elves < 10){
-                elves++;
+            if (elf.getHealth() == 0) {
                 elf = elfSpawner.spawnElf();
-                System.out.println(elves);
-                System.out.println("A new unit is summoned");
+                if (elf == null) {
+                    System.out.println("Orc won !!!");
+                    break;
+                }
+                System.out.println("A new ELF is summoned");
 
-            }
-            else if (elf.getHealth() == 0 && elves == 9){
-                System.out.println("Orc won !!!");
-                break;
             }
 
             elf.attack(orc);
             orc.printHealth();
-            if (orc.getHealth() == 0){
-                if (orcs < 10){
-                    orcs++;
-                    orc = orcSpawner.spawnOrc();
-                    System.out.println(orcs);
-                    System.out.println("A new orc is summoned");
-                }
-                else {
-                    System.out.println("Elf won!!");
+            if (orc.getHealth() == 0) {
+                orc = orcSpawner.spawnOrc();
+                if (orc == null) {
+                    System.out.println("Elf won !!!");
                     break;
                 }
+                System.out.println("A new ORC is summoned");
             }
 
 
         }
+        System.out.println("There have been summoned " + elfSpawner.getElfCount() + " elves");
+        System.out.println("There have beed summoned " + orcSpawner.getOrcCount() + " orcs");
     }
 }
