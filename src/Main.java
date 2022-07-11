@@ -39,7 +39,5 @@ public class Main {
 
 
         }
-        System.out.println("There have been summoned " + elfSpawner.getElfCount() + " elves");
-        System.out.println("There have beed summoned " + orcSpawner.getOrcCount() + " orcs");
     }
 }

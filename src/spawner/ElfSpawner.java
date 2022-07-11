@@ -2,33 +2,29 @@ package spawner;
 
 import model.Elf;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Random;
 
 
 public class ElfSpawner {
 
-    private int elfCount = 0;
 
     private final Random random = new Random();
 
-    private final ArrayList<Elf> elvesList = new ArrayList<>();
+    private final Queue<Elf> elvesQueue = new ArrayDeque<>();
 
     {
         for (int i = 0; i < 10; i++) {
-            elvesList.add(createElf());
+            elvesQueue.add(createElf());
         }
 
     }
 
-    public int getElfCount() {
-        return elfCount;
-    }
 
     public Elf spawnElf() {
-        if (elfCount > 9)
-            return null;
-        return elvesList.get(elfCount++);
+        return elvesQueue.poll();
 
     }
 
