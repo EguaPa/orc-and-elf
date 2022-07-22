@@ -6,6 +6,7 @@ public class Orc extends Unit{
 
     public Orc(int health, int armor, int minDamage, int maxDamage) {
         this.health = health;
+        this.initialHealth = health;
         this.armor = armor;
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
@@ -22,7 +23,7 @@ public class Orc extends Unit{
     }
     @Override
     public void printHealth() {
-        System.out.println("model.Orc current health is: " + health);
+        System.out.println("Orc current health is: " + health);
     }
     @Override
     public void takeDamage(int damage) {
@@ -37,7 +38,7 @@ public class Orc extends Unit{
 
     public void attack(Elf elf) {
         Random random = new Random();
-        int damage = random.nextInt((maxDamage - minDamage) + minDamage);
+        int damage = random.nextInt(maxDamage + 1 - minDamage) + minDamage;
         damage *= ability();
         elf.takeDamage(damage);
     }
