@@ -1,12 +1,13 @@
 import model.Elf;
 import model.Orc;
+import model.Team;
 import necromant.Necromant;
 import spawner.ElfSpawner;
 import spawner.OrcSpawner;
 
 public class Battlefield {
 
-    public static void fight(OrcSpawner orcSpawner, ElfSpawner elfSpawner, Necromant necromant) {
+    public static Team fight(OrcSpawner orcSpawner, ElfSpawner elfSpawner, Necromant necromant) {
         Orc orc = orcSpawner.spawnOrc();
         Elf elf = elfSpawner.spawnElf();
 
@@ -15,13 +16,12 @@ public class Battlefield {
             elf.printHealth();
 
             if (elf.getHealth() == 0) {
-                necromant.dratZombieElf(elf);
+                necromant.draftZombieElf(elf);
                 elf = elfSpawner.spawnElf();
                 if (elf == null) {
                     elf = necromant.releaseZombieElf();
                     if (elf == null) {
-                        System.out.println("Orc won !!!");
-                        break;
+                        return Team.ORCS;
                     }
                     System.out.println("A new Zombie Elf is summoned !!!");
                 } else {
@@ -38,8 +38,7 @@ public class Battlefield {
                 if (orc == null) {
                     orc = necromant.releaseZombieOrc();
                     if (orc == null) {
-                        System.out.println("Elf won !!!");
-                        break;
+                        return Team.ELVES;
                     }
                     System.out.println("A new Zombie Orc is summoned !!!");
                 } else {

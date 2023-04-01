@@ -12,7 +12,7 @@ public class Necromant {
     private final Queue<Elf> zombieElfQueue = new ArrayDeque<>();
 
     public void draftZombieOrc(Orc orc) {
-        if (!orc.isZombie()) {
+        if (!orc.isZombie() && orc.getHealth() == 0) {
             orc.restoreHealth();
             zombieOrcQueue.add(orc);
         }
@@ -22,8 +22,8 @@ public class Necromant {
         return zombieOrcQueue.poll();
     }
 
-    public void dratZombieElf(Elf elf) {
-        if (!elf.isZombie()) {
+    public void draftZombieElf(Elf elf) {
+        if (!elf.isZombie() && elf.getHealth() ==0) {
             elf.restoreHealth();
             zombieElfQueue.add(elf);
         }
