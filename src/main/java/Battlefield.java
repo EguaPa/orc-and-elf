@@ -4,22 +4,11 @@ import necromant.Necromant;
 import spawner.ElfSpawner;
 import spawner.OrcSpawner;
 
-public class Main {
-    public static void main(String[] args) {
+public class Battlefield {
 
-
-        for (int i = 0; i < 100; i++) {
-            fight();
-        }
-
-    }
-
-    private static void fight() {
-        OrcSpawner orcSpawner = new OrcSpawner();
+    public static void fight(OrcSpawner orcSpawner, ElfSpawner elfSpawner, Necromant necromant) {
         Orc orc = orcSpawner.spawnOrc();
-        ElfSpawner elfSpawner = new ElfSpawner();
         Elf elf = elfSpawner.spawnElf();
-        Necromant necromant = new Necromant();
 
         while (true) {
             orc.attack(elf);
